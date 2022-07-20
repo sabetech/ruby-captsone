@@ -25,7 +25,7 @@ describe Item do
         it 'Should let archive property to remain false' do
             @item1.move_to_archive()
 
-            expect(@item.archived).to eq(false)
+            expect(@item.archived).to eq(false) 
         end
         
         it 'Should set the archive property to true' do        
