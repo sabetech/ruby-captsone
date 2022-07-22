@@ -1,8 +1,17 @@
-require '../app_helper.rb'
+require './app_helper.rb'
+require './modules/data_persistence'
 
 class App
+    include DataPersistence
+
     def initialize
-      
+        #   you can create the data folders if they don't exist yet
+        @books = load_books
+        @music_albums = load_music_albums
+        @games = load_games
+        @genres = load_genres
+        @labels = load_labels
+        @author = load_authors
     end
 
     def run
@@ -20,7 +29,7 @@ class App
             puts '| 8.  Add a game'
             puts '| 9.  Add a book'
             puts '| 10. Exit'
-            puts '=============================================='
+            puts '============================================='
             option = gets.chomp.to_i
             process_input(option)
         end
@@ -35,7 +44,7 @@ class App
         when 3
             ListGames.new(@games).display_games
         when 4
-            ListGenres.new(@genres).display_genre
+            ListGenres.new(@genres).display_genres
         when 5
             ListLabels.new(@labels).display_labels
         when 6
