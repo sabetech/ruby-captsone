@@ -1,6 +1,3 @@
-require 'securerandom'
-require '../app_helper'
-
 class Genre
     attr_accessor :name, :id
     attr_reader :items

@@ -1,4 +1,5 @@
-class CreateGenre < genre
+require './classes/genre'
+class CreateGenre < Genre
 
     def initialize (name)
         super(name)

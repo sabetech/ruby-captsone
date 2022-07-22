@@ -1,6 +1,5 @@
-require '../modules/data_persistence'
-
-class ListBooks
+require './classes/book'
+class ListBooks < Book
     attr_reader :books
     def initialize(books)
         @books = books

@@ -1,4 +1,5 @@
-class ListGenres
+require './classes/genre'
+class ListGenres < Genre
     attr_reader :genres
     def initialize(genres)
         @genres = genres

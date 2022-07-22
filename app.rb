@@ -50,16 +50,21 @@ class App
         when 6
             ListAuthors.new(@authors).display_authors
         when 7
-            CreateMusicAlbum.new.return_music_album
+            @music_albums << CreateMusicAlbum.new.return_music_album
         when 8
-            CreateGame.new.return_game
+            @games << CreateGame.new.return_game
         when 9
-            CreateBook.new.return_book
+            @books << CreateBook.new.return_book
         
         when 10
             print "\n"
-            puts 'Thank you for using Catalog-of-my-things'
+            puts 'Thank you for using Catalog-of-my-things'  
             print "\n"
+            puts "saving items to disk ..."
+            save_music_albums(@music_albums)
+            save_games(@games)
+            save_books(@books)
+            
             exit
         else
             puts 'please select another option'

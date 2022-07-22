@@ -1,21 +1,27 @@
-require '../app_helper'
+require './classes/music_album'
+require './classes/create_genre'
+require './classes/create_label'
+require './classes/create_author'
 
 class CreateMusicAlbum < MusicAlbum
     
+    def initialize()
+        @publish_date = get_publish_date
+        @on_spotify = get_on_spotify
+        super(publish_date, on_spotify: @on_spotify)
+    end
+
     def return_music_album
 
         genre = get_genre
         label = get_label
         author = get_author
-        publish_date = get_publish_date
-        on_spotify = get_on_spotify
-
-        music_album = MusicAlbum.new(@publish_date, @on_spotify)
-        music_album.add_genre(genre)
-        music_album.label=label
-        music_album.add_author(author)
+       
+        self.add_genre(genre)
+        self.label=label
+        self.add_author(author)
         
-        return music_album
+        return self
     end
 
     def get_genre
@@ -46,13 +52,13 @@ class CreateMusicAlbum < MusicAlbum
     def get_publish_date
         puts 'What is the publish date of this Album (yyyy-mm-dd)'
         date = gets.chomp
-        @publish_date = Date::strptime(date, "%Y-%m-%d")
+        return date
     end
 
     def get_on_spotify
         loop do
             puts 'Is this music label on spotify?'
-            answer gets.chomp
+            answer = gets.chomp
 
             case answer
             when 'y'

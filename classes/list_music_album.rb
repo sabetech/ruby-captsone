@@ -1,4 +1,5 @@
-class ListMusicAlbums
+require './classes/music_album'
+class ListMusicAlbums < MusicAlbum
     attr_reader :music_albums
     def initialize(music_albums)
         @music_albums = music_albums

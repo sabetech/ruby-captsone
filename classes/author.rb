@@ -1,5 +1,4 @@
 require 'securerandom'
-require '../app_helper'
 
 class Author
     attr_accessor :first_name, :last_name, :items
@@ -15,4 +14,13 @@ class Author
         @items << item
         item.author = self
     end
+
+    def to_json(*_args)
+        {
+          'id' => @id,
+          'first_name' => @first_name,
+          'last_name' => @last_name,
+          'items' => @items
+        }.to_json
+      end
 end
